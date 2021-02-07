@@ -5,9 +5,9 @@ $( <MM> <PROOF_ASST> THEOREM=reiteration  LOC_AFTER=
   Dialog, as instructed by Page409.mmp:
 
 h1::reiteration.1    |- ph
-1001:?:            |- &W1
-2001:?:            |- ( &W1 -> ph )
-qed:1001,2001:ax-mp  |- ph
+!d1::            |- &W1
+!d2::            |- ( &W1 -> ph )
+qed:d1,d2:ax-mp  |- ph
 
 * What happened? From the Step Selector Dialog item you selected, the
   'ax-mp' assertion's label was edit/pasted into the Ref field of the
@@ -15,10 +15,19 @@ qed:1001,2001:ax-mp  |- ph
   performed in the usual manner and "Derive"d two hypothesis steps for
   'qed', which correspond to the requirements of ax-mp.
 
-* OK, now double-click step 2001. Then on the Step Selector Dialog
-  window double-click the line for assertion "id".
+  Let's try out the step selector again.
+  For this demonstartion, first remove the "!" in front of step d1.
+  Normally, you want the '!' there, because it enables autonation
+  that is normally convenient. However, for tutorial purposes,
+  right now we want to see the proof steps worked out slowly.
+
+  Now double-click step d2. Since the "Hyps" field is blank, the
+  step selector will *only* show statements that do not require any
+  hypotheses (we could add a "?" there to allow all statements to be shown).
+  Then on the Step Selector Dialog
+  window, double-click the line for assertion "id" (it will be at or
+  near the top).
 
 * Then go to the next page of the Tutorial (Page411.mmp).
- 
-$) 
 
+$)

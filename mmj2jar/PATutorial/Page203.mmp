@@ -2,7 +2,7 @@ $( <MM> <PROOF_ASST> THEOREM=aProofLabel  LOC_AFTER=wi
 *                                                          Page203.mmp
  Press Ctrl-U now and see what happens.
 
-qed::ax-1     |- ( ph -> ( ph -> ph ) ) 
+qed::ax-1     |- ( ph -> ( ph -> ph ) )
 
 *Ooops. The "Request Errors" screen pops up and error E-PA-0349
  appears saying "Invalid Ref = ax-1 on derivation proof step. Ref
@@ -10,11 +10,10 @@ qed::ax-1     |- ( ph -> ( ph -> ph ) )
  statement. You can leave Ref blank to allow Unify to figure it out
  for you."
 
- OK, so erase the "ax-1" Ref on the "qed" step, and press Ctrl-U.
- 
- Error message Error message error E-PA-0411 will appear.
- 
+ OK, so erase the "ax-1" Ref on the "qed" step, while leaving
+ LOC_AFTER=wi in place, and press Ctrl-U.  Now you'll just see
+ "I-PA-0411 Theorem aProofLabel: Step qed: Step incomplete.".
+
  We will fix that on the next Tutorial page (Page204.mmp).
 
-$) 
-
+$)

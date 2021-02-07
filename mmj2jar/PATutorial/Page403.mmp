@@ -1,29 +1,52 @@
 $( <MM> <PROOF_ASST> THEOREM=reiteration  LOC_AFTER=
 *                                                          Page403.mmp
- Press Ctrl-U to Unify the proof:
-
 h1::reiteration.1  |- ph
-qed::wph           |- ph
+qed::              |- ph
 
-*
- Oops, this error message is displayed: "E-PA-0350 Theorem reiteration 
- Step qed: Invalid Ref = wph is not an Assertion. A derivation step 
- Ref must refer to an Assertion such as a logic Axiom or a Theorem. 
- You can leave Ref blank to allow Unify to figure it out for you.  
- Proof Text input reader last position at Line: 8 Column: 1"
+*There are ways to prove this. The simplest way to prove this would be to
+ modify step qed so its "Hyps" is "1" instead of being blank
+ (that is, put "1" between the colons). Then press control-U;
+ it will then modify qed by adding a ref to "idi" and complete the proof.
+ If you do this, make sure you undo (control-Z) repeatedly to
+ get back to our initial situation.
 
- When you see "Proof Text input reader...blah-blah" that tells you that
- the error was so severe that processing stopped immediately. The
- program didn't even attempt Unification. 
+ The two theorems in set.mm that are essentially the same as "reiteration":
+ "idi" and "dummylink". If you use "idi" as the "Ref" in step qed
+ (while leaving its Hyps field blank), and then pressed control-U,
+ that would *also* complete the proof.  (You can try it, just make sure
+ you undo back to the original statement when you're done).
 
- An error message would also appear if you used "reiteration.1" instead
- of "wph" in the "qed" step Ref field. 
+ This shows that mmj2 often needs either a Hyp value (after the first colon)
+ or a Ref value (after the second colon) to complete a proof step.
+ As we've already seen, mmj2 *can* complete a step if it can unify the step
+ with an existing theorem with no hypotheses. However, most steps in real
+ proofs require something else to be true first.
 
- The problem is that the mmj2 Proof Assistant requires that the Ref
- Label on a Derivation step refer to an Assertion, not an Hypothesis.
- This is a limitation of the mmj2 Proof Assistant, and was intended to 
- simplify the programming. 
- 
+ You could also use "dummyref" as the "Ref" in step qed. However,
+ that will not lead to a trivial proof.  The default mmj2 configuration avoids
+ using dummylink when filling in proofs, because the default
+ mmj2 RunParams.txt config file uses a line like this (possibly with
+ other exclusions as well in a comma-separated list):
+
+     ProofAsstUnifySearchExclude,dummylink
+
+ It's unusual to prove something directly from itself, so usually
+ using "dummylink" or "idi" indicates a mistake or a special technical use.
+ But because this statement is trivial, it's a useful place for us
+ to start in a tutorial.
+
+ This theorem is interesting for another reason. It has the shortest
+ possible Metamath RPN-format proof, "wph", in the underlying
+ Metamath system. The Label "wph" is the Label of the
+ Variable Hypothesis statement in set.mm that refers to wff Variable
+ "ph". Another interesting fact is that its proof in Metamath requires
+ no Axioms! That's right. It is a built-in feature of the underlying
+ Metamath proof language: just pop "wph" onto the stack and Q.E.D.!
+
+ You might think of setting the "qed" step's Ref = "wph" and pressing
+ Ctrl-U to complete the proof. It turns out that won't work.
+ Try that, and see what happens!
+
  OK, forward to the next Tutorial page (Page404.mmp)!
-$) 
 
+$)
